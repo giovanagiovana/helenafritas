@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Convite Para uma Amiga Querida</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body{
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background: linear-gradient(135deg, #ff9ec4, #ffd6e7);
+      overflow:hidden;
+    }
+
+    .container{
+      background:white;
+      padding:40px;
+      border-radius:25px;
+      text-align:center;
+      box-shadow:0 10px 30px rgba(0,0,0,0.2);
+      position:relative;
+      width:90%;
+      max-width:500px;
+    }
+
+    h1{
+      color:#ff4f87;
+      margin-bottom:15px;
+      font-size:2rem;
+    }
+
+    p{
+      color:#444;
+      margin-bottom:30px;
+      font-size:1.1rem;
+    }
+
+    .buttons{
+      position:relative;
+      height:140px;
+    }
+
+    button{
+      border:none;
+      padding:12px 22px;
+      border-radius:15px;
+      font-size:1.1rem;
+      cursor:pointer;
+      transition:0.2s;
+      position:absolute;
+
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    button img{
+      width:40px;
+      height:40px;
+      border-radius:10px;
+      object-fit:cover;
+    }
+
+    #sim{
+      background:#ff4f87;
+      color:white;
+      left:20%;
+    }
+
+    #sim:hover{
+      transform:scale(1.08);
+    }
+
+    #nao{
+      background:#ddd;
+      color:#333;
+      left:55%;
+    }
+
+    .heart{
+      position:absolute;
+      color:#ff4f87;
+      animation: subir 4s linear infinite;
+      opacity:0.7;
+    }
+
+    @keyframes subir{
+      0%{
+        transform:translateY(0);
+        opacity:0;
+      }
+      50%{
+        opacity:1;
+      }
+      100%{
+        transform:translateY(-100vh);
+        opacity:0;
+      }
+    }
+
+    .foto-final{
+      width:250px;
+      border-radius:20px;
+      margin-top:20px;
+      box-shadow:0 10px 20px rgba(0,0,0,0.2);
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>💌 Convite Especial 💌</h1>
+
+    <p>
+      helena fritas <br><br>
+      vamos sair amanhã com muita alegria envolvida
+    </p>
+
+    <div class="buttons">
+
+      <!-- BOTÃO SIM -->
+      <button id="sim">
+        <img src="SIM.jpeg">
+        SIM 💖
+      </button>
+
+      <!-- BOTÃO NÃO -->
+      <button id="nao">
+        <img src="NAO.jpeg">
+        NÃO 😅
+      </button>
+
+    </div>
+  </div>
+
+  <script>
+    const botaoNao = document.getElementById("nao");
+    const botaoSim = document.getElementById("sim");
+
+    // Botão NÃO foge
+    botaoNao.addEventListener("mouseover", () => {
+
+      const largura = window.innerWidth - 150;
+      const altura = window.innerHeight - 100;
+
+      const randomX = Math.random() * largura;
+      const randomY = Math.random() * altura;
+
+      botaoNao.style.left = `${randomX}px`;
+      botaoNao.style.top = `${randomY}px`;
+    });
+
+    // Quando clicar no SIM
+    botaoSim.addEventListener("click", () => {
+
+      document.body.innerHTML = `
+        <div style="
+          height:100vh;
+          display:flex;
+          justify-content:center;
+          align-items:center;
+          flex-direction:column;
+          background:linear-gradient(135deg,#ff9ec4,#ffd6e7);
+          color:white;
+          text-align:center;
+          font-family:Arial;
+          padding:20px;
+        ">
+
+          <h1 style="
+            font-size:3rem;
+            margin-bottom:20px;
+          ">
+          </h1>
+
+          <p style="
+            font-size:1.5rem;
+            margin-top:10px;
+          ">
+           obrigada ❤️
+          </p>
+
+          <!-- FOTO QUE APARECE AO CLICAR -->
+          <img 
+            class="foto-final"
+            src="ACEITOU.jpeg"
+          >
+
+        </div>
+      `;
+
+      criarCoracoes();
+    });
+
+    function criarCoracoes(){
+
+      setInterval(() => {
+
+        const heart = document.createElement("div");
+
+        heart.classList.add("heart");
+
+        heart.innerHTML = "💖";
+
+        heart.style.left = Math.random() * 100 + "vw";
+
+        heart.style.fontSize =
+          (Math.random() * 30 + 20) + "px";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 4000);
+
+      }, 200);
+    }
+
+  </script>
+
+</body>
+</html>
