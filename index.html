@@ -1,42 +1,44 @@
-```html
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Convite Para uma Amiga Querida</title>
+  <title>Convite Especial 💖</title>
 
   <style>
+
     *{
       margin:0;
       padding:0;
       box-sizing:border-box;
-      font-family: Arial, sans-serif;
+      font-family:Arial,sans-serif;
     }
 
     body{
-      height:100vh;
+      min-height:100vh;
       display:flex;
       justify-content:center;
       align-items:center;
-      background: linear-gradient(135deg, #ff9ec4, #ffd6e7);
+      background:linear-gradient(135deg,#ff9ec4,#ffd6e7);
       overflow:hidden;
+      padding:20px;
     }
 
     .container{
       background:white;
-      padding:40px;
+      padding:30px;
       border-radius:25px;
       text-align:center;
       box-shadow:0 10px 30px rgba(0,0,0,0.2);
       position:relative;
-      width:90%;
-      max-width:500px;
+      width:100%;
+      max-width:420px;
     }
 
     h1{
       color:#ff4f87;
-      margin-bottom:15px;
+      margin-bottom:20px;
       font-size:2rem;
     }
 
@@ -44,18 +46,20 @@
       color:#444;
       margin-bottom:30px;
       font-size:1.1rem;
+      line-height:1.5;
     }
 
     .buttons{
       position:relative;
-      height:140px;
+      height:180px;
+      width:100%;
     }
 
     button{
       border:none;
-      padding:12px 22px;
-      border-radius:15px;
-      font-size:1.1rem;
+      padding:12px 18px;
+      border-radius:18px;
+      font-size:1rem;
       cursor:pointer;
       transition:0.2s;
       position:absolute;
@@ -66,43 +70,49 @@
     }
 
     button img{
-      width:40px;
-      height:40px;
-      border-radius:10px;
+      width:55px;
+      height:55px;
+      border-radius:12px;
       object-fit:cover;
     }
 
     #sim{
       background:#ff4f87;
       color:white;
-      left:20%;
+      left:8%;
+      top:20px;
     }
 
     #sim:hover{
-      transform:scale(1.08);
+      transform:scale(1.05);
     }
 
     #nao{
-      background:#ddd;
+      background:#e9e9e9;
       color:#333;
-      left:55%;
+      left:58%;
+      top:20px;
     }
 
     .heart{
       position:absolute;
       color:#ff4f87;
-      animation: subir 4s linear infinite;
+      animation:subir 4s linear infinite;
       opacity:0.7;
+      pointer-events:none;
     }
 
     @keyframes subir{
+
       0%{
         transform:translateY(0);
         opacity:0;
       }
+
       50%{
         opacity:1;
       }
+
       100%{
         transform:translateY(-100vh);
         opacity:0;
@@ -110,10 +120,45 @@
     }
 
     .foto-final{
-      width:250px;
+      width:190px;
+      max-width:80%;
       border-radius:20px;
       margin-top:20px;
       box-shadow:0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    @media(max-width:600px){
+
+      .container{
+        padding:25px;
+      }
+
+      h1{
+        font-size:1.6rem;
+      }
+
+      p{
+        font-size:1rem;
+      }
+
+      button{
+        font-size:0.95rem;
+        padding:10px 16px;
+      }
+
+      button img{
+        width:48px;
+        height:48px;
+      }
+
+      #sim{
+        left:2%;
+      }
+
+      #nao{
+        left:56%;
+      }
+
     }
 
   </style>
@@ -122,10 +167,11 @@
 <body>
 
   <div class="container">
+
     <h1>💌 Convite Especial 💌</h1>
 
     <p>
-      oii helena fritas <br><br>
+      oii helena fritas 💖<br><br>
       vamos sair amanhã com muita alegria envolvida
     </p>
 
@@ -133,42 +179,56 @@
 
       <!-- BOTÃO SIM -->
       <button id="sim">
-     <img src="./sim.jpg">
+        <img src="./sim.jpg">
         SIM 💖
       </button>
 
       <!-- BOTÃO NÃO -->
       <button id="nao">
-       <img src="./nao.jpg">
+        <img src="./nao.jpg">
         NÃO 😅
       </button>
 
     </div>
+
   </div>
 
   <script>
+
     const botaoNao = document.getElementById("nao");
     const botaoSim = document.getElementById("sim");
 
-    // Botão NÃO foge
+    // BOTÃO NÃO FOGE
     botaoNao.addEventListener("mouseover", () => {
 
-      const largura = window.innerWidth - 150;
-      const altura = window.innerHeight - 100;
+      const largura =
+        window.innerWidth - 160;
 
-      const randomX = Math.random() * largura;
-      const randomY = Math.random() * altura;
+      const altura =
+        window.innerHeight - 100;
 
-      botaoNao.style.left = `${randomX}px`;
-      botaoNao.style.top = `${randomY}px`;
+      const randomX =
+        Math.random() * largura;
+
+      const randomY =
+        Math.random() * altura;
+
+      botaoNao.style.left =
+        `${randomX}px`;
+
+      botaoNao.style.top =
+        `${randomY}px`;
+
     });
 
-    // Quando clicar no SIM
+    // CLIQUE NO SIM
     botaoSim.addEventListener("click", () => {
 
       document.body.innerHTML = `
+
         <div style="
-          height:100vh;
+          min-height:100vh;
+          width:100%;
           display:flex;
           justify-content:center;
           align-items:center;
@@ -182,41 +242,44 @@
 
           <h1 style="
             font-size:3rem;
-            margin-bottom:20px;
+            margin-bottom:15px;
           ">
-            AEEEE 💖
-          </h1>
+     
 
           <p style="
-            font-size:1.5rem;
-            margin-top:10px;
+            font-size:1.4rem;
+            margin-bottom:15px;
           ">
             obrigada ❤️
           </p>
 
-          <!-- FOTO FINAL -->
-          <img 
+          <img
             class="foto-final"
-            src="final.jpg"
+            src="./final.jpg"
           >
 
         </div>
+
       `;
 
       criarCoracoes();
+
     });
 
+    // CORAÇÕES
     function criarCoracoes(){
 
       setInterval(() => {
 
-        const heart = document.createElement("div");
+        const heart =
+          document.createElement("div");
 
         heart.classList.add("heart");
 
         heart.innerHTML = "💖";
 
-        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.left =
+          Math.random() * 100 + "vw";
 
         heart.style.fontSize =
           (Math.random() * 30 + 20) + "px";
@@ -228,10 +291,10 @@
         }, 4000);
 
       }, 200);
+
     }
 
   </script>
 
 </body>
 </html>
-```
